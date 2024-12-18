@@ -7,7 +7,7 @@
 # Copyright (c) 2024 Aryan
 # SPDX-License-Identifier: BSD-3-Clause
 
-# Version 1.0.0
+# Version 1.0.1
 
 # Colors
 green='\033[0;32m'
@@ -68,6 +68,8 @@ default() {
 fullscreen() {
     image_directory="${image_directory}/archived/"
     image_name="$(date +%y-%m-%d-%H-%M-%S-%2N).png"
+
+    mkdir -p "${image_directory}"
 
     if [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
         grim -o ${m1} "${image_directory}/${image_name}" || { echo "${red}Error saving screenshot.${nc}"; exit 1; }
