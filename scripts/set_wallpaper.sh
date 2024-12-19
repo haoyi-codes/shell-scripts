@@ -7,7 +7,7 @@
 # Copyright (c) 2024 Aryan
 # SPDX-License-Identifier: BSD-3-Clause
 
-# Version: 1.0.0
+# Version: 1.1.0
 
 # Exit if the user is root.
 if [ "$(id -u)" -eq 0 ]; then
@@ -25,12 +25,15 @@ m1="DP-1"
 default_wallpaper="/usr/local/share/wallpapers/default_wallpaper.png"
 wallpaper_path="${HOME}/media/images/wallpapers/selected/"
 
-# Kill running instances of wallpapers.
-swaybg_pids=$(ps aux | grep "$(whoami)" | grep "swaybg" | grep -v "grep" | awk '{print $2}' | xargs)
-mpvpaper_pids=$(ps aux | grep "$(whoami)" | grep "mpvpaper" | grep -v "grep" | awk '{print $2}' | xargs)
-
-[ -n "${swaybg_pids}" ] && kill -15 ${swaybg_pids}
-[ -n "${mpvpaper_pids}" ] && kill -15 ${mpvpaper_pids}
+# Check if user is in a wayland session.
+if [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
+    # Kill running instances of wallpapers.
+    swaybg_pids=$(ps aux | grep "$(whoami)" | grep "swaybg" | grep -v "grep" | awk '{print $2}' | xargs)
+    mpvpaper_pids=$(ps aux | grep "$(whoami)" | grep "mpvpaper" | grep -v "grep" | awk '{print $2}' | xargs)
+    
+    [ -n "${swaybg_pids}" ] && kill -15 ${swaybg_pids}
+    [ -n "${mpvpaper_pids}" ] && kill -15 ${mpvpaper_pids}
+fi
 
 default() {
     # If we don't have a specific image, use the default.
@@ -41,11 +44,19 @@ default() {
     fi
 
     # Set the wallpaper.
-    swaybg -o ${m1} -i "${wallpaper}" -m fill > /dev/null 2>&1 &
+    if [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
+        swaybg -o ${m1} -i "${wallpaper}" -m fill > /dev/null 2>&1 &
+    else
+        xwallpaper --zoom "${wallpaper}"
+    fi
 }
 
 none() {
-    swaybg -o ${m1} -c "#000000" -m solid_color > /dev/null 2>&1 &
+    if [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
+        swaybg -o ${m1} -c "#000000" -m solid_color > /dev/null 2>&1 &
+    else
+        xwallpaper --clear
+    fi
 }
 
 # Process flags
