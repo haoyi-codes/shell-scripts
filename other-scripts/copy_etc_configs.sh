@@ -1,13 +1,13 @@
 #!/bin/sh
 
 # Script Name: copy_etc_configs.sh
-# Script Path: <git_root>/copy_etc_configs.sh
+# Script Path: <etc-configs-repo>/copy_etc_configs.sh
 # Description: Copy etc configuration files.
 
 # Copyright (c) 2024 Aryan
 # SPDX-License-Identifier: BSD-3-Clause
 
-# Version: 2.4.6
+# Version: 2.5.7
 
 # Colors
 green='\033[0;32m'

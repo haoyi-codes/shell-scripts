@@ -1,13 +1,13 @@
 #!/bin/sh
 
 # Script Name: replace_cmdline.sh
-# File Path: <git_root>/replace_cmdline.sh
+# File Path: <kernel-configs-repo>/replace_cmdline.sh
 # Description: Replace kernel cmdline parameters.
 
 # Copyright (c) 2024 Aryan
 # SPDX-Licence-Identifier: BSD-3-Clause
 
-# Version: 1.0.1
+# Version: 1.1.1
 
 # Colors
 green='\033[0;32m'
