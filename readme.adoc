@@ -4,10 +4,10 @@ This repository holds my custom shell scripts.
 
 === Contents
 
-==== https://src.reticentadmin.com/aryan/software/shell-scripts/src/branch/main/system-scripts[system-scripts]
+==== https://src.reticentadmin.com/aryan/shell-scripts/src/branch/main/system-scripts[system-scripts]
 The scripts found here are mostly QoL automation scripts that are deployed on my systems.
 
-==== https://src.reticentadmin.com/aryan/software/shell-scripts/src/branch/main/other-scripts[other-scripts]
+==== https://src.reticentadmin.com/aryan/shell-scripts/src/branch/main/other-scripts[other-scripts]
 The scripts listed here are obtained from my other git repositories for
 organisational purposes. These should not be run outside their respective
 environments.
