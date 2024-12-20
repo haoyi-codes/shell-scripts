@@ -15,5 +15,5 @@ The scripts found here are mostly QoL automation scripts that are deployed on my
 
 ==== https://src.reticentadmin.com/aryan/shell-scripts/src/branch/main/other-scripts[other-scripts]
 The scripts listed here are obtained from my other git repositories for
-organisational purposes. These should not be run outside their respective
+organisational purposes. These should **not** be run outside their respective
 environments.
