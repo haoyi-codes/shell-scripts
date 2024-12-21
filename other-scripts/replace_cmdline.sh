@@ -1,13 +1,13 @@
 #!/bin/sh
 
 # Script Name: replace_cmdline.sh
-# File Path: <kernel-configs-repo>/replace_cmdline.sh
+# File Path: <kernel-configs-repo>/scripts/replace_cmdline.sh
 # Description: Replace kernel cmdline parameters.
 
 # Copyright (c) 2024 Aryan
 # SPDX-Licence-Identifier: BSD-3-Clause
 
-# Version: 1.1.1
+# Version: 2.0.1
 
 # Colors
 green='\033[0;32m'
@@ -30,10 +30,10 @@ delta_cmd_line="root=PARTUUID=<root_partuuid> nvidia_drm.fbdev=1 nosmt=force qui
 kotori_cmd_line="rootfstype=bcachefs root=UUID=<root_uuid> nosmt=force intel_iommu=on quiet"
 
 # Replace the CMDLINE parameters with the default ones.
-find "./configs/delta/" -type f -exec sed -i "s/^CONFIG_CMDLINE=.*/CONFIG_CMDLINE=\"${delta_cmd_line}\"/" {} + \
+find "../configs/delta/" -type f -exec sed -i "s/^CONFIG_CMDLINE=.*/CONFIG_CMDLINE=\"${delta_cmd_line}\"/" {} + \
     || { echo "${red}Error replacing delta command line parameters.${nc}"; exit 1; }
 
-find "./configs/kotori/" -type f -exec sed -i "s/^CONFIG_CMDLINE=.*/CONFIG_CMDLINE=\"${kotori_cmd_line}\"/" {} + \
+find "../configs/kotori/" -type f -exec sed -i "s/^CONFIG_CMDLINE=.*/CONFIG_CMDLINE=\"${kotori_cmd_line}\"/" {} + \
     || { echo "${red}Error replacing kotori command line parameters.${nc}"; exit 1; }
 
 echo "${green}Successfully replaced command line parameters!${nc}"

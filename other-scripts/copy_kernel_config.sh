@@ -1,13 +1,13 @@
 #!/bin/sh
 
 # Script Name: copy_kernel_config.sh
-# File Path: <kernel-configs-repo>/copy_kernel_config.sh
+# File Path: <kernel-configs-repo>/scripts/copy_kernel_config.sh
 # Description: Copy kernel configuration file.
 
 # Copyright (c) 2024 Aryan
 # SPDX-Licence-Identifier: BSD-3-Clause
 
-# Version: 2.1.0
+# Version: 3.0.1
 
 # Colors
 green='\033[0;32m'
@@ -89,7 +89,7 @@ linux_ver="$(echo "${linux_config}" | awk '/# Linux\/x86/ { print $3 }')"
 local_ver="$(echo "${linux_config}" | grep "^CONFIG_LOCALVERSION" | sed -e 's/"//g' -e 's/^CONFIG_LOCALVERSION=-//')"
 full_linux_ver="${linux_ver}-${local_ver}"
 
-rsync -ahuq "${system}:${chosen_ver_path}/.config" "./configs/${system}/${full_linux_ver}" || { echo "${red}Error copying ${full_linux_ver} to configs/${system}/.${nc}"; exit 1; }
+rsync -ahuq "${system}:${chosen_ver_path}/.config" "../configs/${system}/${full_linux_ver}" || { echo "${red}Error copying ${full_linux_ver} to configs/${system}/.${nc}"; exit 1; }
 
 # Replace command line parameters.
 ./replace_cmdline.sh || { echo "${red}Error replacing command line parameters.${nc}"; exit 1; }
