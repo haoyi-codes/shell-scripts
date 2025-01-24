@@ -7,7 +7,7 @@
 # Copyright (c) 2024 Aryan
 # SPDX-License-Identifier: BSD-3-Clause
 
-# Version 1.0.1
+# Version: 1.0.2
 
 # Colors
 green='\033[0;32m'
@@ -44,7 +44,7 @@ clipboard() {
     else
         maim -s "${tmp_file}" || { echo "${red}Error taking screenshot.${nc}"; exit 1; }
         strip_meta_data
-        xclip -selection clipboard -t image/png || { echo "${red}Error copying to clipboard.${nc}"; exit 1; }
+        cat "${tmp_file}" | xclip -sel clipboard -t image/png || { echo "${red}Error copying to clipboard.${nc}"; exit 1; }
         rm -f "${tmp_file}"
     fi
 
@@ -89,7 +89,7 @@ image_name() {
         image_name="$(echo "" | dmenu --fn 'monospace 10' --tb '#005577' --tf '#ffffff' --hf '#ffffff' -p "Please enter the image name")"
     fi
 
-    if echo "$image_name" | grep -q '/'; then 
+    if echo "$image_name" | grep -q '/'; then
         echo "${red}Creating new directories are not allowed.${nc}"
         exit 1
     fi
