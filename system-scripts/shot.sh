@@ -7,7 +7,7 @@
 # Copyright (c) 2024 Aryan
 # SPDX-License-Identifier: BSD-3-Clause
 
-# Version: 1.0.2
+# Version: 1.0.3
 
 # Colors
 green='\033[0;32m'
@@ -75,7 +75,7 @@ fullscreen() {
         grim -o ${m1} "${image_directory}/${image_name}" || { echo "${red}Error saving screenshot.${nc}"; exit 1; }
         strip_meta_data
     else
-        maim "${tmp_file}" || { echo "${red}Error taking screenshot.${nc}"; exit 1; }
+        maim "${image_directory}/${image_name}" || { echo "${red}Error taking screenshot.${nc}"; exit 1; }
         strip_meta_data
     fi
 
