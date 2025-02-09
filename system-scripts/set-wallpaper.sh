@@ -1,13 +1,13 @@
 #!/bin/sh
 
-# Script Name: set_wallpaper.sh
-# Script Path: /usr/local/bin/set_wallpaper.sh
+# Script Name: set-wallpaper.sh
+# Script Path: /usr/local/bin/set-wallpaper
 # Description: A simple script that sets the wallpaper.
 
 # Copyright (c) 2024 Aryan
 # SPDX-License-Identifier: BSD-3-Clause
 
-# Version: 1.1.0
+# Version: 2.0.0
 
 # Exit if the user is root.
 if [ "$(id -u)" -eq 0 ]; then
