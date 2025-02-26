@@ -7,7 +7,7 @@
 # Copyright (c) 2024 Aryan
 # SPDX-License-Identifier: BSD-3-Clause
 
-# Version: 1.0.3
+# Version: 1.0.4
 
 # Colors
 green='\033[0;32m'
@@ -111,7 +111,7 @@ pastebin() {
     else
         maim -s "${tmp_file}" || { echo "${red}Error taking screenshot.${nc}"; exit 1; }
         strip_meta_data
-        curl -F"file=@${tmp_file}" https://0x0.st | xclip
+        curl -F"file=@${tmp_file}" https://0x0.st | xclip -sel clipboard
         rm -f "${tmp_file}"
     fi
 
